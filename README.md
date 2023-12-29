@@ -9,5 +9,15 @@ This CLI tool is an attempt at fixing that.
 
 ### Why should you use this?
 
-Rule of thumb, you shouldn't. Use the create-t3-app instead.
+**Rule of thumb, you shouldn't.** Use the create-t3-app instead.
 This is my modified and opinionated version of it.
+Even if it fits your development needs, I would avoid it has it won't have the same sort of maintenance.
+
+### What's different?
+
+- Built with Bun
+- shadcn/ui pre-installed
+- Zustand pre-installed
+- No Auth
+- Next.js App Directory only
+- Structured source directory
