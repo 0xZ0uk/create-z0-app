@@ -23,12 +23,11 @@ program.version("0.1.0").description(
 			}
 		}),
 		"\n\n",
-		"A CLI tool inspired by the T3 Stack"
+		"An opinionated stack based on the T3 stack."
 	)
 );
 
 program
-	.command("create")
 	.description("Create a new project")
 	.action(async () => {
 		const response = await prompts({
@@ -40,6 +39,12 @@ program
 		});
 
 		const projectName = response.projectName.trim() as string;
+
+		if (projectName === "") {
+			console.error(chalk.red("Project name cannot be empty"));
+			process.exit(1);
+		}
+
 		const projectPath = path.join(process.cwd(), projectName);
 
 		// Check if the project directory already exists
