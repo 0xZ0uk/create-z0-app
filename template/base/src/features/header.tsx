@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { CommandDialog, CommandInput } from "@/components/ui/command";
 import {
   NavigationMenu,
   NavigationMenuItem,
