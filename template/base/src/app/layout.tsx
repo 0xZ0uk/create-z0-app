@@ -3,7 +3,7 @@ import "@/styles/globals.css";
 import { cookies } from "next/headers";
 
 import { TRPCReactProvider } from "@/trpc/react";
-import { fontSans } from "@/utils/fonts";
+import { fontBody } from "@/utils/fonts";
 
 export const metadata = {
   title: "Create Z0 App",
@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${fontSans.variable}`}>
+      <body className={`font-sans ${fontBody.variable}`}>
         <TRPCReactProvider cookies={cookies().toString()}>
           {children}
         </TRPCReactProvider>

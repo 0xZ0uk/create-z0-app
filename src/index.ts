@@ -59,7 +59,7 @@ program
 		fs.mkdirSync(projectPath);
 
 		// Add your logic to generate project files/directory structure here
-		const templatePath = path.join(dirname, "template");
+		const templatePath = path.join(dirname, "template/base");
 
 		ncp(templatePath, projectPath, (err) => {
 			if (err) {
