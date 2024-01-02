@@ -98,6 +98,10 @@ export const runCli = async (): Promise<any> => {
       },
       {
         type: "toggle",
+        choices: [
+          { title: "Yes", value: true },
+          { title: "No", value: false },
+        ], 
         name: "useGit",
         message: "Will you be using git?",
         initial: true,
