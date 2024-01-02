@@ -3,7 +3,7 @@ import { Header } from "@/features/header";
 import { cn } from "@/lib/utils";
 import { fontHeading } from "@/utils/fonts";
 
-export default async function Home() {
+export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-start bg-background text-foreground">
       <Header />
