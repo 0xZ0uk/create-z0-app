@@ -1,8 +1,9 @@
 import chalk from "chalk";
 import { program } from "commander";
 import figlet from "figlet";
-import { getVersion } from "./utils/getVersion";
 import prompts from "prompts";
+
+import { getVersion } from "./utils/getVersion";
 
 interface CliFlags {
   noGit: boolean;
@@ -46,32 +47,33 @@ export const runCli = async (): Promise<any> => {
           }
         }),
         "\n\n",
-        "An opinionated stack based on the T3 stack."
-      )
+        "An opinionated stack based on the T3 stack.",
+      ),
     )
     .argument(
       "[dir]",
-      "The name of the application, as well as the name of the directory to create"
+      "The name of the application, as well as the name of the directory to create",
     )
+    .command("create", "Create a new z0-app")
     .option(
       "--noGit",
       "Explicitly tell the CLI to not initialize a new git repo in the project",
-      false
+      false,
     )
     .option(
       "--noInstall",
       "Explicitly tell the CLI to not run the package manager's install command",
-      false
+      false,
     )
     .option(
       "-y, --default",
       "Bypass the CLI and use all default options to bootstrap a new z0-app",
-      false
+      false,
     )
     .option(
       "-i, --import-alias",
       "Explicitly tell the CLI to use a custom import alias",
-      defaultOptions.flags?.importAlias
+      defaultOptions.flags?.importAlias,
     )
     .parse(process.argv);
 
@@ -101,17 +103,17 @@ export const runCli = async (): Promise<any> => {
         choices: [
           { title: "Yes", value: true },
           { title: "No", value: false },
-        ], 
+        ],
         name: "useGit",
         message: "Will you be using git?",
         initial: true,
       },
-      {
+      /* {
         type: "toggle",
         choices: [
           { title: "Yes", value: true },
           { title: "No", value: false },
-        ], 
+        ],
         name: "useInstall",
         message: "Will you be installing packages?",
         initial: true,
@@ -121,12 +123,11 @@ export const runCli = async (): Promise<any> => {
         name: "importAlias",
         message: "What will your import alias be?",
         initial: cliResults.flags.importAlias,
-      }
+      }, */
     ];
 
-    
     let answers: prompts.Answers<string> = await prompts(questions);
-  
+
     return {
       appName: answers?.appName ?? cliResults.appName,
       packages: [],
@@ -136,11 +137,10 @@ export const runCli = async (): Promise<any> => {
         default: false,
         importAlias: cliResults.flags.importAlias,
       },
-    }
+    };
   } catch (err) {
     console.error(err);
   }
 
   return { res, ...cliResults };
-}
-
+};
