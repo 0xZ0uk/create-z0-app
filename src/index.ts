@@ -3,54 +3,30 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { program } from "commander";
 import ncp from "ncp";
 import chalk from "chalk";
-import figlet from "figlet";
-import prompts from "prompts";
+import { dirname } from "./utils/consts";
+import { runCli } from "./cli";
 
-const dirname = path
-	.dirname(new URL(import.meta.url).pathname)
-	.replace("/dist", "");
 
-program.version("0.1.0").description(
-	chalk.redBright(
-		await figlet("Created by z_0", function (err, data) {
-			if (err) {
-				console.log("Something went wrong...");
-				console.dir(err);
-				return;
-			}
-		}),
-		"\n\n",
-		"An opinionated stack based on the T3 stack."
-	)
-);
+const main = async () => {
+	const {
+    appName,
+    packages,
+    flags: { noGit, noInstall, importAlias, appRouter },
+  } = await runCli();
 
-program
-	.description("Create a new project")
-	.action(async () => {
-		const response = await prompts({
-			type: "text",
-			name: "projectName",
-			message: "Enter the project name:",
-			validate: (value) =>
-				value.trim() !== "" || "Project name cannot be empty",
-		});
-
-		const projectName = response.projectName.trim() as string;
-
-		if (projectName === "") {
-			console.error(chalk.red("Project name cannot be empty"));
+		if (appName === "") {
+			console.error(chalk.red("Project name cannot be empty!"));
 			process.exit(1);
 		}
 
-		const projectPath = path.join(process.cwd(), projectName);
+		const projectPath = path.join(process.cwd(), appName);
 
 		// Check if the project directory already exists
 		if (fs.existsSync(projectPath)) {
 			console.error(
-				chalk.red(`Error: Directory "${projectName}" already exists.`)
+				chalk.red(`Error: Directory "${appName}" already exists.`)
 			);
 			process.exit(1);
 		}
@@ -68,9 +44,12 @@ program
 			}
 
 			console.log(
-				chalk.green(`Project "${projectName}" created successfully.`)
+				chalk.green(`Project "${appName}" created successfully.`)
 			);
 		});
-	});
+}
 
-program.parse(process.argv);
+main().catch((err) =>  {
+	console.error("Aborting installation, due to error: ", err);
+	process.exit(1);
+})

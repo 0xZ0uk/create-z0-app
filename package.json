@@ -1,6 +1,6 @@
 {
   "name": "create-z0-app",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Create web application with the z0 stack",
   "license": "MIT",
   "type": "module",
@@ -46,15 +46,18 @@
     "chalk": "^5.3.0",
     "commander": "^11.1.0",
     "figlet": "^1.7.0",
+    "fs-extra": "^11.2.0",
     "ncp": "^2.0.0",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.10",
     "prompts": "^2.4.2",
-    "tsup": "^8.0.1"
+    "tsup": "^8.0.1",
+    "type-fest": "^4.9.0"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/figlet": "^1.5.8",
+    "@types/fs-extra": "^11.0.4",
     "@types/ncp": "^2.0.8",
     "@types/prompts": "^2.4.9"
   }
