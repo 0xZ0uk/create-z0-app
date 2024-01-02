@@ -10,8 +10,13 @@ This CLI tool is an attempt at fixing that.
 ### Why should you use this?
 
 **Rule of thumb, you shouldn't.** Use the create-t3-app instead.
-This is my modified and opinionated version of it.
+This is heavily modified version of it, that encapsulates my development style and the tools I use the most.
 Even if it fits your development needs, I would avoid it has it won't have the same sort of maintenance.
+
+If you still choose to use it:
+
+1. I warned you.
+2. Please leave some feedback.
 
 ### What's different?
 

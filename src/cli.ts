@@ -12,6 +12,7 @@ interface CliFlags {
   importAlias: string;
 
   // Extras
+  langchain?: boolean;
 }
 
 interface CliResults {
@@ -74,6 +75,11 @@ export const runCli = async (): Promise<any> => {
       "-i, --import-alias",
       "Explicitly tell the CLI to use a custom import alias",
       defaultOptions.flags?.importAlias,
+    )
+    .option(
+      "-l, --langchain",
+      "Explicitly tell the CLI to setup langchain",
+      false,
     )
     .parse(process.argv);
 
