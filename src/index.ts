@@ -7,6 +7,7 @@ import ncp from "ncp";
 import chalk from "chalk";
 import { dirname } from "./utils/consts";
 import { runCli } from "./cli";
+import { initializeGit } from "./helpers/git";
 
 
 const main = async () => {
@@ -47,6 +48,12 @@ const main = async () => {
 				chalk.green(`Project "${appName}" created successfully.`)
 			);
 		});
+
+		if (!noGit) {
+			await initializeGit(projectPath);
+		}
+
+		process.exit(0);
 }
 
 main().catch((err) =>  {
