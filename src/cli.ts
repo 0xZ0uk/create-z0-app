@@ -40,7 +40,7 @@ export const runCli = async (): Promise<any> => {
     .version(await getVersion(), "-v, --version", "Display the version number")
     .description(
       chalk.redBright(
-        figlet("Created by z_0", function (err, data) {
+        await figlet("Created by z_0", function (err, data) {
           if (err) {
             console.log("Something went wrong...");
             console.dir(err);

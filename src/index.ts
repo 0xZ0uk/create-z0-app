@@ -35,27 +35,22 @@ const main = async () => {
   // Add your logic to generate project files/directory structure here
   const templatePath = path.join(dirname, "template/base");
 
-  ncp(templatePath, projectPath, (err) => {
+  ncp(templatePath, projectPath, async (err) => {
     if (err) {
       console.error(chalk.red(`Error copying template files: ${err}`));
       process.exit(1);
     }
 
     console.log(chalk.green(`Project "${appName}" created successfully.`));
+
+    if (!noInstall) {
+      await installDependencies(projectPath);
+    }
+
+    if (!noGit) {
+      await initializeGit(projectPath);
+    }
   });
-
-  if (!noInstall) {
-    await installDependencies(projectPath);
-  }
-
-  if (!noGit) {
-    await initializeGit(projectPath);
-  }
-
-  if (!noInstall) {
-    console.log(chalk.yellow("Installing dependencies..."));
-    // await installDependencies(projectPath);
-  }
 
   process.exit(0);
 };
