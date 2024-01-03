@@ -1,6 +1,6 @@
 {
   "name": "create-z0-app",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Create web application with the z0 stack",
   "license": "MIT",
   "type": "module",
