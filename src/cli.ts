@@ -114,7 +114,7 @@ export const runCli = async (): Promise<any> => {
         message: "Will you be using git?",
         initial: true,
       },
-      /* {
+      {
         type: "toggle",
         choices: [
           { title: "Yes", value: true },
@@ -124,7 +124,7 @@ export const runCli = async (): Promise<any> => {
         message: "Will you be installing packages?",
         initial: true,
       },
-      {
+      /* {
         type: "text",
         name: "importAlias",
         message: "What will your import alias be?",

@@ -22,7 +22,7 @@ If you still choose to use it:
 
 - Built with Bun
 - shadcn/ui pre-installed
-- Zustand pre-installed
+- Zustand pre-installed with slices setup
 - No Auth
-- Next.js App Directory only
+- Next.js Page Router only
 - Structured source directory
