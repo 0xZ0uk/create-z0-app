@@ -51,10 +51,6 @@ export const runCli = async (): Promise<any> => {
         "An opinionated stack based on the T3 stack.",
       ),
     )
-    .argument(
-      "[dir]",
-      "The name of the application, as well as the name of the directory to create",
-    )
     .command("create", "Create a new z0-app")
     .option(
       "--noGit",
