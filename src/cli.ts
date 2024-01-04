@@ -51,7 +51,6 @@ export const runCli = async (): Promise<any> => {
         "An opinionated stack based on the T3 stack.",
       ),
     )
-    .command("create", "Create a new z0-app")
     .option(
       "--noGit",
       "Explicitly tell the CLI to not initialize a new git repo in the project",
@@ -60,21 +59,6 @@ export const runCli = async (): Promise<any> => {
     .option(
       "--noInstall",
       "Explicitly tell the CLI to not run the package manager's install command",
-      false,
-    )
-    .option(
-      "-y, --default",
-      "Bypass the CLI and use all default options to bootstrap a new z0-app",
-      false,
-    )
-    .option(
-      "-i, --import-alias",
-      "Explicitly tell the CLI to use a custom import alias",
-      defaultOptions.flags?.importAlias,
-    )
-    .option(
-      "-l, --langchain",
-      "Explicitly tell the CLI to setup langchain",
       false,
     )
     .parse(process.argv);

@@ -13,7 +13,7 @@ const main = async () => {
   const {
     appName,
     packages,
-    flags: { noGit, noInstall, importAlias, appRouter },
+    flags: { noGit, noInstall },
   } = await runCli();
 
   if (appName === "") {
