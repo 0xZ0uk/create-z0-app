@@ -3,8 +3,6 @@ import { program } from "commander";
 import figlet from "figlet";
 import prompts from "prompts";
 
-import { getVersion } from "./utils/getVersion";
-
 interface CliFlags {
   noGit: boolean;
   noInstall: boolean;
@@ -25,8 +23,8 @@ const defaultOptions: CliResults = {
   appName: "create-z0-app",
   packages: [],
   flags: {
-    noGit: false,
-    noInstall: false,
+    noGit: true,
+    noInstall: true,
     default: false,
     importAlias: "@/",
   },
@@ -37,7 +35,7 @@ export const runCli = async (): Promise<any> => {
 
   const res = program
     .name("create-z0-app")
-    .version(await getVersion(), "-v, --version", "Display the version number")
+    .version("1.0.12", "-v, --version", "Display the version number")
     .description(
       chalk.redBright(
         await figlet("Created by z_0", function (err, data) {

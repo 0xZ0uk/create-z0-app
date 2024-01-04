@@ -12,7 +12,6 @@ import { dirname } from "./utils/consts";
 const main = async () => {
   const {
     appName,
-    packages,
     flags: { noGit, noInstall },
   } = await runCli();
 
@@ -41,18 +40,27 @@ const main = async () => {
       process.exit(1);
     }
 
-    console.log(chalk.green(`Project "${appName}" created successfully.`));
+    if (noGit) {
+      await initializeGit(projectPath);
+    }
 
-    if (!noInstall) {
+    // Install dependencies
+    if (noInstall) {
+      console.log(
+        chalk.yellow(
+          `Installing dependencies in ${projectPath} using ${chalk.cyan(
+            "bun",
+          )}...`,
+        ),
+      );
+
       await installDependencies(projectPath);
     }
 
-    if (!noGit) {
-      await initializeGit(projectPath);
-    }
+    console.log(chalk.green(`Project "${appName}" created successfully.`));
   });
 
-  process.exit(0);
+  // Initialize a new git repo
 };
 
 main().catch((err) => {
