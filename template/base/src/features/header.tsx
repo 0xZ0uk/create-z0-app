@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import React from "react";
+import { ModeToggle } from "./mode-toggle";
 
 interface HeaderProps {}
 
@@ -46,6 +47,7 @@ export const Header: React.FC<HeaderProps> = () => {
             <span className="text-xs">⌘</span>K
           </kbd>
         </Button>
+        <ModeToggle />
       </div>
     </header>
   );
